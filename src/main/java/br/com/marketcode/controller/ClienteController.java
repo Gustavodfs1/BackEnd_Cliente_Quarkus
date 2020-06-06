@@ -26,6 +26,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import br.com.marketcode.model.Cliente;
+import br.com.marketcode.model.DadosPagamento;
 import br.com.marketcode.services.ClienteService;
 
 @Path("/api/cliente/v1/")
@@ -37,6 +38,23 @@ public class ClienteController {
     @Inject
      ClienteService clienteService;
 
+    @GET
+    @Path("/dados-pagamento-cliente/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+     public DadosPagamento buscarDados(@PathParam("id") Long id){
+
+        Cliente cliente = Cliente.findById(id);
+
+        DadosPagamento dadosPagamento = new DadosPagamento();
+        dadosPagamento.setCvcCartao(cliente.cvcCartao);
+        dadosPagamento.setNomeCartao(cliente.nomeCartao);
+        dadosPagamento.setNumCartao(cliente.numCartao);
+        dadosPagamento.setValidadeCartao(cliente.validadeCartao);
+
+
+
+        return dadosPagamento;
+     }
 
     @GET
     @Operation(summary = "Retornar todos os clientes")

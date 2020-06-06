@@ -2,6 +2,13 @@
 # key = value jdbc:h2:mem:testdb
 "%dev":
   quarkus:
+    log:
+      console:
+        format: "%d{HH:mm:ss} %-5p traceId=%X{traceId}, spanId=%X{spanId}, sampled=%X{sampled} [%c{2.}] (%t) %s%e%n"
+    jaeger:
+      service-name: Cliente
+      sampler-type: const
+      sampler-param: 1
     datasource:
       db-kind: mysql
       username: root
@@ -13,7 +20,7 @@
         ~: org.hibernate.dialect.MySQL8Dialect
       database:
         generation:
-          ~: update
+          ~: none
 
 "%test":
   quarkus:
