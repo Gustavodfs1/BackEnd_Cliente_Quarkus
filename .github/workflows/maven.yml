@@ -19,7 +19,7 @@ jobs:
       - name: Setup GraalVM environment
         uses: DeLaGuardo/setup-graalvm@2.0
         with:
-          graalvm-version: 20.1.0
+          graalvm-version: "20.1.0"
       - name: Build native executable
         run: mvn package -Pnative -Dquarkus.native.container-build=true
         
