@@ -1,5 +1,27 @@
 # Configuration file
 # key = value jdbc:h2:mem:testdb
+"%prod":
+  quarkus:
+    log:
+      console:
+        format: "%d{HH:mm:ss} %-5p traceId=%X{traceId}, spanId=%X{spanId}, sampled=%X{sampled} [%c{2.}] (%t) %s%e%n"
+    jaeger:
+      service-name: Cliente
+      sampler-type: const
+      sampler-param: 1
+    datasource:
+      db-kind: mysql
+      username: root
+      password: abc@123
+      jdbc:
+        url: jdbc:mysql://35.224.155.2:3306/MarketCodeCompra
+    hibernate-orm:
+      dialect:
+        ~: org.hibernate.dialect.MySQL57InnoDBDialect
+      database:
+        generation:
+          ~: update
+
 "%dev":
   quarkus:
     log:
@@ -14,13 +36,13 @@
       username: root
       password: abc@123
       jdbc:
-        url: jdbc:mysql://localhost:3306/MarketCode
+        url: jdbc:mysql://localhost:3306/MarketCodeCompra
     hibernate-orm:
       dialect:
-        ~: org.hibernate.dialect.MySQL8Dialect
+        ~: org.hibernate.dialect.MySQL57InnoDBDialect
       database:
         generation:
-          ~: none
+          ~: update
 
 "%test":
   quarkus:
