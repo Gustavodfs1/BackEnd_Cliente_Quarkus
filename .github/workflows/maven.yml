@@ -7,7 +7,7 @@ on: [push]
 
 jobs:
   native_build:
-    runs-on: ubuntu-latest
+    runs-on: quay.io/repository/quarkus/centos-quarkus-maven?tag=19.3.2-java11
     name: Build native Quarkus app
     steps:
       - name: Checkout the code
