@@ -14,7 +14,7 @@
       username: root
       password: abc@123
       jdbc:
-        url: jdbc:mysql://35.224.155.2:3306/MarketCodeCompra
+        url: jdbc:mysql://35.224.155.2:3306/MarketCodeCliente
     hibernate-orm:
       dialect:
         ~: org.hibernate.dialect.MySQL57InnoDBDialect
@@ -58,3 +58,8 @@
       database:
         generation:
           ~: drop-and-create
+
+quarkus:
+  swagger-ui:
+    always-include: true
+    path: /documentacao
