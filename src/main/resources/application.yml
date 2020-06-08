@@ -14,7 +14,7 @@
       username: root
       password: abc@123
       jdbc:
-        url: jdbc:mysql://35.224.155.2:3306/MarketCodeCliente
+        url: jdbc:mysql://35.222.194.73:3306/MarketCodeCliente
     hibernate-orm:
       dialect:
         ~: org.hibernate.dialect.MySQL57InnoDBDialect
