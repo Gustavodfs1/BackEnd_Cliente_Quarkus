@@ -24,7 +24,6 @@ jobs:
         run: mvn package -Pnative -Dquarkus.native.container-build=true
       - name: Listar itens
         run: |
-          cd target
           ls
       - name: Upload native executable
         uses: actions/upload-artifact@v1
