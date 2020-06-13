@@ -11,16 +11,16 @@
       sampler-param: 1
     datasource:
       db-kind: mysql
-      username: root
-      password: abc@123
+      username: ${USERNAME_BANCO:root}
+      password: ${SENHA_BANCO:abc@123}
       jdbc:
-        url: jdbc:mysql://35.222.194.73:3306/MarketCodeCliente
+        url: ${JDBC_URL:jdbc:mysql://35.222.194.73:3306/MarketCodeCliente}
     hibernate-orm:
       dialect:
         ~: org.hibernate.dialect.MySQL57InnoDBDialect
       database:
         generation:
-          ~: update
+          ~: none
 
 "%dev":
   quarkus:
