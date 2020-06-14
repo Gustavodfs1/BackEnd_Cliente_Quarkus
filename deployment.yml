@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: market-code-cliente
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: market-code-cliente
+  template:
+    metadata:
+      labels:
+        app: market-code-cliente
+    spec:
+      containers:
+        - name: market-code-cliente
+          image: gustavodfs/market-code-cliente
+          env:
+            - name: JDBC_URL
+              value: jdbc:mysql://172.16.48.3:3306/MarketCodeCliente
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: market-code-cliente
+spec:
+  selector:
+    app: market-code-cliente
+  ports:
+    - port: 8080
+      targetPort: 8080
+  type: NodePort
